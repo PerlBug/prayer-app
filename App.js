@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useMemo } from "react";
+import ThemeContext from "./ThemeContext";
+import Main from "./Main";
 
 export default function App() {
+  const [theme, setTheme] = useState("light");
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
+  const themeValue = useMemo(() => ({ theme, toggleTheme }), [theme]);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <ThemeContext.Provider value={themeValue}>
+        <Main />
+      </ThemeContext.Provider>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
