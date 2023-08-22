@@ -1,20 +1,13 @@
-import React, { useState, useMemo } from "react";
-import ThemeContext from "./ThemeContext";
+import React from "react";
 import Main from "./Main";
+import SettingsProvider from "./SettingsProvider";
 
 export default function App() {
-  const [theme, setTheme] = useState("light");
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  };
-
-  const themeValue = useMemo(() => ({ theme, toggleTheme }), [theme]);
-
   return (
     <>
-      <ThemeContext.Provider value={themeValue}>
+      <SettingsProvider>
         <Main />
-      </ThemeContext.Provider>
+      </SettingsProvider>
     </>
   );
 }

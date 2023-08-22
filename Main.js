@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useContext } from "react";
+import React from "react";
 import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -7,15 +7,15 @@ import PrayerList from "./screens/PrayerList";
 import Prayer from "./screens/Prayer";
 import Settings from "./screens/Settings";
 import { Ionicons } from "@expo/vector-icons";
-import ThemeContext from "./ThemeContext";
 import useTheme from "./useTheme";
+import { useSettings } from "./SettingsProvider";
 const Stack = createNativeStackNavigator();
 
 export default function Main() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-
   const { secondaryBg, primaryText, secondaryText } = useTheme();
+  const { toggleTheme, theme, language } = useSettings();
 
+  console.log({ theme, language });
   return (
     <>
       <StatusBar style={theme === "light" ? "dark" : "light"} />
@@ -34,11 +34,11 @@ export default function Main() {
             options={({ navigation }) => ({
               headerRight: () => (
                 <Ionicons
-                  name="settings-outline"
+                  name="language-outline"
                   size={20}
                   color={secondaryText}
                   style={{ marginRight: 15 }}
-                  onPress={() => navigation.navigate("Settings")}
+                  onPress={() => navigation.navigate("Language")}
                 />
               ),
               headerLeft: () => (
@@ -62,7 +62,7 @@ export default function Main() {
               title: `Prayer ${route.params.prayerIdx + 1}`,
             })}
           />
-          <Stack.Screen name="Settings" component={Settings} />
+          <Stack.Screen name="Language" component={Settings} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

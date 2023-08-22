@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import pallete from "./theme";
-import ThemeContext from "./ThemeContext";
+import { useSettings } from "./SettingsProvider";
 
 const useTheme = () => {
-  const { theme } = useContext(ThemeContext);
-  console.log({ theme });
+  const { theme } = useSettings();
+
   const {
     primaryBg,
     secondaryBg,
