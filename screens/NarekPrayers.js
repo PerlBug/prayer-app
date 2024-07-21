@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import prayers from "../prayers/english/prayers.json";
 
 import useTheme from "../useTheme";
-export default function PrayerList() {
+export default function NarekPrayers() {
   const navigation = useNavigation();
   const { primaryBg, primaryText, secondaryText, border } = useTheme();
 
@@ -29,7 +29,10 @@ export default function PrayerList() {
         borderBottomWidth: 1,
       }}
       onPress={() =>
-        navigation.navigate("Prayer", { prayerIdx: item.prayerIdx })
+        navigation.navigate("Prayer", {
+          prayerIdx: item.prayerIdx,
+          name: item.name,
+        })
       }
     >
       <Text style={{ color: primaryText }}>{item.name}</Text>
@@ -45,6 +48,9 @@ export default function PrayerList() {
       data={data}
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
+      contentContainerStyle={{
+        paddingBottom: 80,
+      }}
     />
   );
 }
