@@ -9,11 +9,16 @@ export default function PrayerList() {
   const { primaryBg, primaryText, secondaryText, border } = useTheme();
 
   // Convert the JSON structure to the data format expected by FlatList
-  const data = prayers.map((group, idx) => ({
-    id: String(idx + 1),
-    name: `Prayer ${idx + 1}`,
-    prayerIdx: idx,
-  }));
+  const data = prayers.map((group, idx) => {
+    let name = `Prayer ${idx}`;
+    if (idx === 0) name = "Tenets Of Prayer";
+    if (idx === prayers.length - 1) name = "Colophon";
+    return {
+      id: String(idx + 1),
+      name,
+      prayerIdx: idx,
+    };
+  });
 
   const renderItem = ({ item }) => (
     <TouchableOpacity

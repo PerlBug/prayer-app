@@ -15,36 +15,24 @@ export default function Prayer({ route }) {
         backgroundColor: primaryBg,
       }}
     >
-      <Text
+      <View
         style={{
-          fontWeight: "bold",
-          color: primaryText,
+          marginBottom: 48,
         }}
       >
-        Speaking with God from the Depths of the Heart {"\n"}
-        {"\n"}
-      </Text>
-      {prayers[prayerIdx].map((item, index) => (
-        <View
-          key={index}
-          style={{
-            marginBottom: 48,
-          }}
-        >
-          {item.split("\n").map((line, lineIndex) => (
-            <Text
-              key={lineIndex}
-              style={{
-                fontSize: 16,
-                marginBottom: 8, // Adjust this value for spacing between lines
-                color: primaryText,
-              }}
-            >
-              {line}
-            </Text>
-          ))}
-        </View>
-      ))}
+        {prayers[prayerIdx].split("\n").map((line, lineIndex) => (
+          <Text
+            key={lineIndex}
+            style={{
+              fontSize: 16,
+              marginBottom: 8, // Adjust this value for spacing between lines
+              color: primaryText,
+            }}
+          >
+            {line}
+          </Text>
+        ))}
+      </View>
     </ScrollView>
   );
 }

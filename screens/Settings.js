@@ -3,19 +3,23 @@ import { FlatList, Text, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
 import useTheme from "../useTheme";
 import { Ionicons } from "@expo/vector-icons";
+import { useSettings } from "../SettingsProvider";
 
 export default function Settings() {
   const { primaryBg, primaryText, secondaryText, border } = useTheme();
+  const { language, setLanguage } = useSettings();
 
   // Convert the JSON structure to the data format expected by FlatList
   const data = [
     {
       idx: 0,
       name: `English`,
+      value: "en",
     },
     {
       idx: 1,
       name: `Armenian`,
+      value: "am",
     },
   ];
 
@@ -29,18 +33,12 @@ export default function Settings() {
         flexDirection: "row",
         justifyContent: "space-between",
       }}
-      onPress={() =>
-        navigation.navigate("Prayer", { prayerIdx: item.prayerIdx })
-      }
-      key={item.idx + item.name}
+      onPress={() => setLanguage(item.value)}
     >
       <Text style={{ color: primaryText }}>{item.name}</Text>
-      <Ionicons
-        name="md-checkmark-sharp"
-        size={20}
-        color={secondaryText}
-        onPress={() => navigation.navigate("Language")}
-      />
+      {item.value === language && (
+        <Ionicons name="md-checkmark-sharp" size={20} color={secondaryText} />
+      )}
     </TouchableOpacity>
   );
 
@@ -52,7 +50,7 @@ export default function Settings() {
       }}
       data={data}
       renderItem={renderItem}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.idx}
     />
   );
 }
