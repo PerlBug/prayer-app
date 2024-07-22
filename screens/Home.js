@@ -29,7 +29,12 @@ const PrayerCategories = ({ navigation }) => {
     <CategoryCard
       title={item.title}
       icon={item.icon}
-      onPress={() => navigation.navigate(item.title, { category: item.title })}
+      onPress={() =>
+        navigation.navigate(item.title, {
+          category: item.title,
+          slug: item.slug,
+        })
+      }
     />
   );
 

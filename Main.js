@@ -9,8 +9,8 @@ import Settings from "./screens/Settings";
 import { Ionicons } from "@expo/vector-icons";
 import useTheme from "./useTheme";
 import { useSettings } from "./SettingsProvider";
-import NarekPrayers from "./screens/NarekPrayers";
 import { categories } from "./categories";
+import PrayerList from "./screens/PrayerList";
 const Stack = createNativeStackNavigator();
 
 export default function Main() {
@@ -60,7 +60,7 @@ export default function Main() {
             <Stack.Screen
               name={i.title}
               key={idx + i.title}
-              component={NarekPrayers}
+              component={PrayerList}
               options={({ route }) => ({
                 title: route.params.name,
                 slug: `${route.params.slug}`,

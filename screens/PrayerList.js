@@ -1,24 +1,17 @@
 import React from "react";
 import { FlatList, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import prayers from "../prayers/english/prayers.json";
-
+import narek from "../prayers/en/narek/narek.json";
 import useTheme from "../useTheme";
-export default function NarekPrayers() {
+import { getPrayerData } from "../prayers";
+
+export default function PrayerList({ route }) {
+  const { slug } = route.params;
+  const jsonPath = `../prayers/en/${slug}/${slug}.json`;
   const navigation = useNavigation();
   const { primaryBg, primaryText, secondaryText, border } = useTheme();
 
-  // Convert the JSON structure to the data format expected by FlatList
-  const data = prayers.map((group, idx) => {
-    let name = `Prayer ${idx}`;
-    if (idx === 0) name = "Tenets Of Prayer";
-    if (idx === prayers.length - 1) name = "Colophon";
-    return {
-      id: String(idx + 1),
-      name,
-      prayerIdx: idx,
-    };
-  });
+  const prayerData = getPrayerData("en", slug);
 
   const renderItem = ({ item }) => (
     <TouchableOpacity
@@ -45,7 +38,7 @@ export default function NarekPrayers() {
         flex: 1,
         backgroundColor: primaryBg,
       }}
-      data={data}
+      data={prayerData}
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
       contentContainerStyle={{

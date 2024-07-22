@@ -1,5 +1,3 @@
-import NarekPrayers from "./screens/NarekPrayers";
-
 export const categories = [
   {
     id: "2",
@@ -12,7 +10,6 @@ export const categories = [
     title: "Narek",
     icon: "book-open-variant",
     slug: "narek",
-    component: NarekPrayers,
   },
   {
     id: "3",
