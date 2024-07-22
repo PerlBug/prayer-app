@@ -1,8 +1,11 @@
 // prayerData.js
 import narekEn from "../prayers/en/narek/narek.json";
+import dailyPrayersEn from "../prayers/en/daily-prayers/daily-prayers.json";
+
 const prayerData = {
   en: {
     narek: narekEn,
+    [`daily-prayers`]: dailyPrayersEn,
     // ... other prayer types for English
   },
 };

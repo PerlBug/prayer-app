@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/Home";
 import Prayer from "./screens/Prayer";
 import Settings from "./screens/Settings";
-import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 import useTheme from "./useTheme";
 import { useSettings } from "./SettingsProvider";
 import { categories } from "./categories";
@@ -17,7 +17,6 @@ export default function Main() {
   const { secondaryBg, primaryText, secondaryText } = useTheme();
   const { toggleTheme, theme, language } = useSettings();
 
-  console.log({ theme, language });
   return (
     <>
       <StatusBar style={theme === "light" ? "dark" : "light"} />
@@ -35,16 +34,17 @@ export default function Main() {
             name="Armenian Prayers"
             component={Home}
             options={({ navigation }) => ({
-              headerLeft: () => (
-                <Ionicons
-                  name="cog"
-                  size={22}
-                  color={secondaryText}
-                  style={{ marginRight: 15 }}
-                  onPress={() => navigation.navigate("Language")}
-                />
-              ),
               headerRight: () => (
+                <View style={{ width: 30, alignItems: "center" }}>
+                  <FontAwesome5
+                    name="cog"
+                    size={22}
+                    color={secondaryText}
+                    onPress={() => navigation.navigate("Settings")}
+                  />
+                </View>
+              ),
+              /* headerRight: () => (
                 <View style={{ paddingRight: 15 }}>
                   <Ionicons
                     name={theme === "light" ? "moon" : "sunny"}
@@ -53,7 +53,7 @@ export default function Main() {
                     onPress={toggleTheme}
                   />
                 </View>
-              ),
+              ), */
             })}
           />
           {categories.map((i, idx) => (
@@ -71,11 +71,21 @@ export default function Main() {
           <Stack.Screen
             name="Prayer"
             component={Prayer}
-            options={({ route }) => ({
+            options={({ route, navigation }) => ({
               title: route.params.name,
+              headerRight: () => (
+                <View style={{ width: 30, alignItems: "center" }}>
+                  <FontAwesome5
+                    name="cog"
+                    size={22}
+                    color={secondaryText}
+                    onPress={() => navigation.navigate("Settings")}
+                  />
+                </View>
+              ),
             })}
           />
-          <Stack.Screen name="Language" component={Settings} />
+          <Stack.Screen name="Settings" component={Settings} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

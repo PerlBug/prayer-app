@@ -4,8 +4,9 @@ import { usePersistedContext } from "./usePersistedContext";
 
 const SettingsProvider = ({ children }) => {
   const [state, setState] = usePersistedContext({
-    theme: "light",
+    theme: "dark",
     language: "en",
+    fontSize: 20,
   });
 
   const toggleTheme = () => {
@@ -19,8 +20,13 @@ const SettingsProvider = ({ children }) => {
     setState((prevState) => ({ ...prevState, language: newLanguage }));
   };
 
+  const setFontSize = (newFontSize) => {
+    setState((prevState) => ({ ...prevState, fontSize: newFontSize }));
+  };
   return (
-    <SettingsContext.Provider value={{ ...state, toggleTheme, setLanguage }}>
+    <SettingsContext.Provider
+      value={{ ...state, toggleTheme, setLanguage, setFontSize }}
+    >
       {children}
     </SettingsContext.Provider>
   );

@@ -1,11 +1,12 @@
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import React from "react";
-import prayers from "../prayers/english/prayers.json";
 import useTheme from "../useTheme";
+import { useSettings } from "../SettingsProvider";
 
 export default function Prayer({ route }) {
-  const { prayerIdx } = route.params;
+  const { prayerIdx, text } = route.params;
   const { primaryBg, primaryText, secondaryText, border } = useTheme();
+  const { fontSize } = useSettings();
 
   return (
     <ScrollView
@@ -20,11 +21,11 @@ export default function Prayer({ route }) {
           marginBottom: 48,
         }}
       >
-        {prayers[prayerIdx].split("\n").map((line, lineIndex) => (
+        {text.split("\n").map((line, lineIndex) => (
           <Text
             key={lineIndex}
             style={{
-              fontSize: 16,
+              fontSize,
               marginBottom: 8, // Adjust this value for spacing between lines
               color: primaryText,
             }}

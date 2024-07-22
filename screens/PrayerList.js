@@ -4,15 +4,16 @@ import { useNavigation } from "@react-navigation/native";
 import narek from "../prayers/en/narek/narek.json";
 import useTheme from "../useTheme";
 import { getPrayerData } from "../prayers";
+import { useSettings } from "../SettingsProvider";
 
 export default function PrayerList({ route }) {
   const { slug } = route.params;
   const jsonPath = `../prayers/en/${slug}/${slug}.json`;
   const navigation = useNavigation();
+  const { fontSize } = useSettings();
   const { primaryBg, primaryText, secondaryText, border } = useTheme();
 
   const prayerData = getPrayerData("en", slug);
-
   const renderItem = ({ item }) => (
     <TouchableOpacity
       style={{
@@ -25,10 +26,11 @@ export default function PrayerList({ route }) {
         navigation.navigate("Prayer", {
           prayerIdx: item.prayerIdx,
           name: item.name,
+          text: item.text,
         })
       }
     >
-      <Text style={{ color: primaryText }}>{item.name}</Text>
+      <Text style={{ color: primaryText, fontSize: 16 }}>{item.name}</Text>
     </TouchableOpacity>
   );
 
