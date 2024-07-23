@@ -11,11 +11,21 @@ import useTheme from "./useTheme";
 import { useSettings } from "./SettingsProvider";
 import { categories } from "./categories";
 import PrayerList from "./screens/PrayerList";
+import Info from "./screens/Info";
 const Stack = createNativeStackNavigator();
 
 export default function Main() {
   const { secondaryBg, primaryText, secondaryText } = useTheme();
   const { toggleTheme, theme, language } = useSettings();
+  const renderInfoIcon = (navigation, infoData) => (
+    <FontAwesome5
+      name="info-circle"
+      size={22}
+      color={secondaryText}
+      style={{ marginRight: 15 }}
+      onPress={() => navigation.navigate("Info", { infoData })}
+    />
+  );
 
   return (
     <>
@@ -42,6 +52,11 @@ export default function Main() {
                     color={secondaryText}
                     onPress={() => navigation.navigate("Settings")}
                   />
+                </View>
+              ),
+              headerLeft: () => (
+                <View>
+                  {renderInfoIcon(navigation, "General app information here.")}
                 </View>
               ),
               /* headerRight: () => (
@@ -85,6 +100,7 @@ export default function Main() {
               ),
             })}
           />
+          <Stack.Screen name="Info" component={Info} />
           <Stack.Screen name="Settings" component={Settings} />
         </Stack.Navigator>
       </NavigationContainer>
