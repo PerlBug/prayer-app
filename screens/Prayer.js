@@ -28,6 +28,7 @@ export default function Prayer({ route }) {
               fontSize,
               marginBottom: 8, // Adjust this value for spacing between lines
               color: primaryText,
+              lineHeight: 28,
             }}
           >
             {line}

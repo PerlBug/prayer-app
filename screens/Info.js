@@ -3,15 +3,14 @@ import { View, Text, ScrollView, StyleSheet } from "react-native";
 import useTheme from "../useTheme";
 import { useSettings } from "../SettingsProvider";
 
-export default function Info({ route }) {
-  const { infoData } = route.params;
+export default function Info() {
   const { primaryBg, primaryText } = useTheme();
-  const { fontSize } = useSettings();
+  const { fontSize, infoText } = useSettings();
 
   return (
     <ScrollView style={[styles.container, { backgroundColor: primaryBg }]}>
       <Text style={[styles.text, { color: primaryText, fontSize }]}>
-        {infoData}
+        {infoText}
       </Text>
     </ScrollView>
   );
@@ -23,6 +22,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   text: {
-    lineHeight: 24,
+    lineHeight: 28,
+    marginBottom: 60,
   },
 });

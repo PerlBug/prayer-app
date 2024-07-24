@@ -27,7 +27,7 @@ export default function Settings() {
     {
       id: "fontSize",
       title: "Font Size",
-      value: fontSize,
+      value: fontSize || 20,
       options: [
         { name: "Small", value: 18 },
         { name: "Medium", value: 20 },

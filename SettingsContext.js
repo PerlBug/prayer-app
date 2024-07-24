@@ -6,6 +6,10 @@ const SettingsContext = createContext({
   fontSize: 20,
   toggleSettings: () => {},
   setLanguage: () => {},
+  infoText: "",
+  infoTitle: "",
+  setInfoTitle: () => {},
+  setInfoText: () => {},
 });
 
 export default SettingsContext;
