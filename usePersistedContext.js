@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const usePersistedContext = () => {
-  const defaultState = { theme: "light", language: "en" };
+  const defaultState = { theme: "dark", language: "en" };
 
   const [state, setState] = useState(defaultState);
-
   useEffect(() => {
     const fetchInitialState = async () => {
       try {

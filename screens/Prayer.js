@@ -18,7 +18,7 @@ export default function Prayer({ route }) {
     >
       <View
         style={{
-          marginBottom: 48,
+          marginBottom: 150,
         }}
       >
         {text.split("\n").map((line, lineIndex) => (

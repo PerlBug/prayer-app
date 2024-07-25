@@ -5,15 +5,18 @@ import narek from "../prayers/en/narek/narek.json";
 import useTheme from "../useTheme";
 import { getPrayerData } from "../prayers";
 import { useSettings } from "../SettingsProvider";
+import { categories } from "../categories";
 
 export default function PrayerList({ route }) {
   const { slug } = route.params;
+
   const jsonPath = `../prayers/en/${slug}/${slug}.json`;
   const navigation = useNavigation();
   const { fontSize } = useSettings();
   const { primaryBg, primaryText, secondaryText, border } = useTheme();
 
   const prayerData = getPrayerData("en", slug);
+
   const renderItem = ({ item }) => (
     <TouchableOpacity
       style={{
@@ -25,8 +28,11 @@ export default function PrayerList({ route }) {
       onPress={() =>
         navigation.navigate("Prayer", {
           prayerIdx: item.prayerIdx,
+          slug: slug,
           name: item.name,
           text: item.text,
+          id: item.id,
+          category: categories.find((c) => c.slug === slug)?.title,
         })
       }
     >

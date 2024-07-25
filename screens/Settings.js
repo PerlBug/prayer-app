@@ -96,6 +96,9 @@ export default function Settings() {
         <Text style={[styles.aboutText, { color: secondaryText }]}>
           Made with ❤️ by Mko Galoyan
         </Text>
+        <Text style={[styles.emailText, { color: secondaryText }]}>
+          For bugs/suggestions email: galoyanmko@gmail.com
+        </Text>
       </View>
     </View>
   );
@@ -149,6 +152,11 @@ const styles = StyleSheet.create({
   },
   aboutText: {
     fontSize: 14,
+    fontStyle: "italic",
+    marginBottom: 8,
+  },
+  emailText: {
+    fontSize: 10,
     fontStyle: "italic",
     marginBottom: 24,
   },

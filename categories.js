@@ -39,9 +39,15 @@ export const categories = [
     id: "5",
     title: "General Prayers",
     icon: "hands-pray",
-    slug: "general-prayers",
+    slug: "general",
     infoTitle: "General Armenian Prayers",
     infoDescription:
-      "This diverse collection encompasses prayers from various periods of Armenian Christian history, spanning over 1700 years of rich spiritual tradition. It includes both ancient and more recent compositions, reflecting the evolving yet consistent faith of the Armenian people. These prayers cover a wide range of themes and occasions, from personal devotions to liturgical use, and from prayers for protection to thanksgiving. Many of these prayers are integral to the Armenian Divine Liturgy (Badarak) and other church services, forming a vital link between individual piety and communal worship.",
+      "This collection features prayers from various Christian traditions, with a focus on Armenian spiritual heritage. It includes well-known prayers like the Lord's Prayer, alongside selections from the Armenian Book of Hourly Prayers and works of St. Nerses the Graceful. Covering daily devotions, liturgical use, and personal supplications, these prayers span themes from protection and healing to guidance and thanksgiving. They reflect how faith is expressed in various aspects of life, bridging individual piety and communal worship across different Christian traditions.",
+  },
+  {
+    id: "6",
+    title: "Bookmarks",
+    icon: "bookmark",
+    slug: "bookmark",
   },
 ];
