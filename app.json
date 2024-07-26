@@ -15,7 +15,8 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.bottlespeaker.armenianprayers",
-      "usePushNotificationsEmulator": false
+      "usePushNotificationsEmulator": false,
+      "buildNumber": "2"
     },
     "android": {
       "adaptiveIcon": {
