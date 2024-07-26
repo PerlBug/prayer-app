@@ -29,7 +29,7 @@ const SettingsProvider = ({ children }) => {
   const [persistedState, setPersistedState] = usePersistedContext(
     defaultPersistedState
   );
-
+  console.log({ persistedState });
   const [bookmarks, dispatchBookmarks] = useReducer(
     bookmarkReducer,
     persistedState.bookmarks || []
@@ -77,7 +77,11 @@ const SettingsProvider = ({ children }) => {
       payload: { language, slug, prayerId, name, category },
     };
 
-    const updatedBookmarks = bookmarkReducer(persistedState.bookmarks, action);
+    console.log({ persistedState });
+    const updatedBookmarks = bookmarkReducer(
+      persistedState.bookmarks || [],
+      action
+    );
 
     dispatchBookmarks(action);
 

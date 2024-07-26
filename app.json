@@ -13,7 +13,9 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bottlespeaker.armenianprayers",
+      "usePushNotificationsEmulator": false
     },
     "android": {
       "adaptiveIcon": {
@@ -23,6 +25,21 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0b11ad70-094b-4cc3-aade-fdb5a22bd2f0"
+      }
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "ios": {
+            "capable": false
+          }
+        }
+      ]
+    ]
   }
 }
